@@ -11,11 +11,36 @@ export type SignUpResult = {
   error: AuthError | null;
 };
 
+export type LoginInput = {
+  email: string;
+  password: string;
+};
+
+export type LoginResult = {
+  user: User | null;
+  error: AuthError | null;
+};
+
 export const signUpAccount = async ({
   email,
   password,
 }: SignUpInput): Promise<SignUpResult> => {
   const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+  });
+
+  return {
+    user: data.user,
+    error,
+  };
+};
+
+export const loginAccount = async ({
+  email,
+  password,
+}: LoginInput): Promise<LoginResult> => {
+  const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,
   });

@@ -27,6 +27,31 @@ Notes:
 
 5. Restart the development server after changing env values.
 
+## Supabase migrations from VS Code
+
+Supabase CLI is initialized in this repo (`supabase/config.toml`).
+
+Run these commands in the VS Code terminal:
+
+```bash
+npm run supabase:login
+npm run supabase:link
+npm run supabase:db:push
+```
+
+What they do:
+- `supabase:login`: Authenticates CLI with your Supabase account.
+- `supabase:link`: Connects this repo to your project (`ugyvoqjyeevtitevfcjs`).
+- `supabase:db:push`: Applies SQL files in `supabase/migrations/` to that project.
+
+After push, verify table creation:
+
+```sql
+select table_schema, table_name
+from information_schema.tables
+where table_name = 'bookmarks';
+```
+
 ## Available Scripts
 
 In the project directory, you can run:

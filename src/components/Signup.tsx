@@ -33,7 +33,7 @@ const Signup = () => {
   };
 
   return (
-    <form className="signup-form" onSubmit={handleSignUp}>
+    <form className="auth-form" onSubmit={handleSignUp}>
       <h2>Create account</h2>
 
       <label htmlFor="email">Email</label>
