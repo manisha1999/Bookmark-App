@@ -1,38 +1,66 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.app-shell {
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  padding: 24px;
+  background: linear-gradient(180deg, #f9f6f1 0%, #ece5da 100%);
 }
 
-.App-link {
-  color: #61dafb;
+.card {
+  width: min(100%, 680px);
+  background: #fffdf8;
+  border: 1px solid #ded7cb;
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(73, 58, 38, 0.12);
+  padding: 32px;
+  text-align: left;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #23201a;
+}
+
+.subtitle {
+  margin-top: 8px;
+  color: #5e564c;
+}
+
+.status-row {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.badge {
+  width: fit-content;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.badge.checking {
+  background: #fff2c7;
+  color: #674a00;
+}
+
+.badge.connected {
+  background: #d9f8e4;
+  color: #0c5d2f;
+}
+
+.badge.error {
+  background: #ffd8d8;
+  color: #8b1f1f;
+}
+
+.hint {
+  margin-top: 18px;
+  color: #6f665b;
+  line-height: 1.5;
 }

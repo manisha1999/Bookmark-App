@@ -1,6 +1,25 @@
-# Getting Started with Create React App
+# React TypeScript App (CRA)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project uses Create React App with TypeScript and is wired to Supabase.
+
+## Supabase setup
+
+1. Create a project in Supabase.
+2. Copy your project URL and anon key from Project Settings -> API.
+3. Create a local env file:
+
+```bash
+cp .env.example .env
+```
+
+4. Fill in these variables in .env:
+
+```bash
+REACT_APP_SUPABASE_URL=https://your-project-ref.supabase.co
+REACT_APP_SUPABASE_ANON_KEY=your-anon-key
+```
+
+5. Restart the development server after changing env values.
 
 ## Available Scripts
 
