@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import { supabase } from './lib/supabaseClient';
+import Signup from './components/Signup';
 
 type ConnectionState = 'checking' | 'connected' | 'error';
 
@@ -40,6 +41,8 @@ function App() {
           <span className={`badge ${status}`}>{status.toUpperCase()}</span>
           <p>{message}</p>
         </div>
+
+        <Signup />
 
         <p className="hint">
           Set REACT_APP_SUPABASE_URL and REACT_APP_SUPABASE_ANON_KEY in your

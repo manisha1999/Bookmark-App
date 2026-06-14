@@ -17,7 +17,13 @@ cp .env.example .env
 ```bash
 REACT_APP_SUPABASE_URL=https://your-project-ref.supabase.co
 REACT_APP_SUPABASE_ANON_KEY=your-anon-key
+SUPABASE_DB_URL=postgresql://postgres:[YOUR-PASSWORD]@db.your-project-ref.supabase.co:5432/postgres
 ```
+
+Notes:
+- The React app connects to Supabase using REACT_APP_SUPABASE_URL and REACT_APP_SUPABASE_ANON_KEY.
+- SUPABASE_DB_URL is server-only and should not be used in browser code.
+- For your project ref ugyvoqjyeevtitevfcjs, the correct URL is https://ugyvoqjyeevtitevfcjs.supabase.co.
 
 5. Restart the development server after changing env values.
 
