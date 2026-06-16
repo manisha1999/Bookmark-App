@@ -21,6 +21,10 @@ export type LoginResult = {
   error: AuthError | null;
 };
 
+export type LogoutResult = {
+  error: AuthError | null;
+};
+
 export const signUpAccount = async ({
   email,
   password,
@@ -49,4 +53,10 @@ export const loginAccount = async ({
     user: data.user,
     error,
   };
+};
+
+export const logoutAccount = async (): Promise<LogoutResult> => {
+  const { error } = await supabase.auth.signOut();
+
+  return { error };
 };

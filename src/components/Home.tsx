@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import type { User } from '@supabase/supabase-js';
 import { supabase } from '../lib/supabaseClient';
 import {
@@ -10,6 +10,7 @@ import {
   type Bookmark,
   updateBookmark,
 } from '../api/bookmarks';
+import { logoutAccount } from '../api/auth';
 
 type HomeProps = {
   status: string;
@@ -17,6 +18,7 @@ type HomeProps = {
 };
 
 const Home = ({ status, message }: HomeProps) => {
+  const navigate = useNavigate();
   const [user, setUser] = useState<User | null>(null);
   const [profileOpen, setProfileOpen] = useState(false);
   const [profileError, setProfileError] = useState('');
@@ -30,6 +32,7 @@ const Home = ({ status, message }: HomeProps) => {
   const [isPublic, setIsPublic] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
+  const [loggingOut, setLoggingOut] = useState(false);
 
   useEffect(() => {
     const loadProfile = async () => {
@@ -191,6 +194,19 @@ const Home = ({ status, message }: HomeProps) => {
     }
   };
 
+  const handleLogout = async () => {
+    setLoggingOut(true);
+    const { error } = await logoutAccount();
+    setLoggingOut(false);
+
+    if (error) {
+      setProfileError(error.message);
+      return;
+    }
+
+    navigate('/login', { replace: true });
+  };
+
   const avatarLetter = user?.email?.charAt(0).toUpperCase() || 'P';
 
   return (
@@ -225,6 +241,17 @@ const Home = ({ status, message }: HomeProps) => {
                   <p>
                     <strong>Email:</strong> {user?.email || 'No active user'}
                   </p>
+                  <p>
+                    <strong>User ID:</strong> {user?.id || 'Not available'}
+                  </p>
+                  <button
+                    type="button"
+                    className="logout-btn"
+                    onClick={handleLogout}
+                    disabled={loggingOut}
+                  >
+                    {loggingOut ? 'Logging out...' : 'Logout'}
+                  </button>
                   
                 </>
               )}
