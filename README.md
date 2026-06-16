@@ -17,9 +17,40 @@ cp .env.example .env
 ```bash
 REACT_APP_SUPABASE_URL=https://your-project-ref.supabase.co
 REACT_APP_SUPABASE_ANON_KEY=your-anon-key
+SUPABASE_DB_URL=postgresql://postgres:[YOUR-PASSWORD]@db.your-project-ref.supabase.co:5432/postgres
 ```
 
+Notes:
+- The React app connects to Supabase using REACT_APP_SUPABASE_URL and REACT_APP_SUPABASE_ANON_KEY.
+- SUPABASE_DB_URL is server-only and should not be used in browser code.
+- For your project ref ugyvoqjyeevtitevfcjs, the correct URL is https://ugyvoqjyeevtitevfcjs.supabase.co.
+
 5. Restart the development server after changing env values.
+
+## Supabase migrations from VS Code
+
+Supabase CLI is initialized in this repo (`supabase/config.toml`).
+
+Run these commands in the VS Code terminal:
+
+```bash
+npm run supabase:login
+npm run supabase:link
+npm run supabase:db:push
+```
+
+What they do:
+- `supabase:login`: Authenticates CLI with your Supabase account.
+- `supabase:link`: Connects this repo to your project (`ugyvoqjyeevtitevfcjs`).
+- `supabase:db:push`: Applies SQL files in `supabase/migrations/` to that project.
+
+After push, verify table creation:
+
+```sql
+select table_schema, table_name
+from information_schema.tables
+where table_name = 'bookmarks';
+```
 
 ## Available Scripts
 
