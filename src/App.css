@@ -1,3 +1,47 @@
+.home-links {
+  display: flex;
+  gap: 12px;
+}
+.nav-pill {
+  border: 1px solid #d6ccbc;
+  border-radius: 999px;
+  padding: 7px 12px;
+  background: transparent;
+  color: #4d4439;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.nav-pill.active {
+  background: #4f7b5d;
+  color: #fff;
+  border-color: #4f7b5d;
+}
+.auth-card {
+  width: min(980px, calc(100% - 48px));
+  margin: 22px auto 0;
+  padding: 20px;
+  border: 1px solid #dbd1c3;
+  border-radius: 16px;
+  background: rgba(255, 252, 247, 0.92);
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1.25fr 1fr;
+}
+.auth-copy h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #23201a;
+}
+.auth-copy .subtitle {
+  margin-top: 8px;
+  color: #5e564c;
+}
+@media (max-width: 900px) {
+  .auth-card {
+    grid-template-columns: 1fr;
+  }
+}
 .app-shell {
   min-height: 100vh;
   display: flex;
